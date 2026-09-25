@@ -7,7 +7,6 @@ import { ArrowLeft, Bookmark, PlusCircle, Star, Flame } from "lucide-react";
 import { Workout } from "@/types/workout";
 import { useWorkout } from "@/context/WorkoutContext";
 
-// লোকাল ফলব্যাক ডেটা
 const fallbackWorkouts: Workout[] = [
   {
     id: 1,
@@ -316,7 +315,6 @@ export default function WorkoutDetailPage({ params }: PageProps) {
   return (
     <div className="w-full min-h-screen py-10 md:py-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Back Link */}
         <Link
           href="/"
           className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-white mb-8 transition-colors"
@@ -325,9 +323,7 @@ export default function WorkoutDetailPage({ params }: PageProps) {
           <span>Back to Library</span>
         </Link>
 
-        {/* 2-Column Split Details Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          {/* Left Column: Image Card */}
           <div className="lg:col-span-6 rounded-2xl overflow-hidden border border-zinc-800 bg-[#14161b] relative aspect-4/3 lg:aspect-square">
             <Image
               src={workout.image}
@@ -339,7 +335,6 @@ export default function WorkoutDetailPage({ params }: PageProps) {
             />
           </div>
 
-          {/* Right Column: Information & Actions */}
           <div className="lg:col-span-6 flex flex-col gap-6">
             <div>
               <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-white mb-3">
@@ -361,7 +356,6 @@ export default function WorkoutDetailPage({ params }: PageProps) {
               ))}
             </div>
 
-            {/* Specs Key-Value Table */}
             <div className="border border-zinc-800/80 rounded-xl bg-[#14161b] overflow-hidden divide-y divide-zinc-800/60 text-xs">
               <div className="flex justify-between px-4 py-3">
                 <span className="font-semibold text-zinc-500 uppercase tracking-wider">Equipment</span>
@@ -395,7 +389,6 @@ export default function WorkoutDetailPage({ params }: PageProps) {
               </div>
             </div>
 
-            {/* Step-by-Step Instructions */}
             <div className="space-y-3">
               <h2 className="text-xs font-black uppercase tracking-widest text-zinc-400">
                 Instructions
@@ -410,7 +403,6 @@ export default function WorkoutDetailPage({ params }: PageProps) {
               </ol>
             </div>
 
-            {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
               <button
                 onClick={() => addToPlan(workout)}

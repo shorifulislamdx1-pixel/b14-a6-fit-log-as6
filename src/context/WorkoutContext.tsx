@@ -28,7 +28,6 @@ export const WorkoutProvider = ({ children }: { children: React.ReactNode }) => 
       if (storedPlan) setTodayPlan(JSON.parse(storedPlan));
       if (storedSaved) setSavedWorkouts(JSON.parse(storedSaved));
     } catch {
-      // browser storage handling
     } finally {
       setIsLoaded(true);
     }

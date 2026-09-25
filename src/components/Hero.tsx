@@ -39,14 +39,14 @@ export default function Hero() {
         </div>
 
         <div className="lg:col-span-5 flex justify-center lg:justify-end">
-          <div className="relative w-72 h-72 sm:w-84 sm:h-84 md:w-96 md:h-96 rounded-2xl overflow-hidden border border-zinc-800 bg-[#16181f] flex items-center justify-center p-4">
+          <div className="relative w-72 h-72 sm:w-84 sm:h-84 md:w-96 md:h-96 flex items-center justify-center">
             <Image
-              src="https://img.magnific.com/free-photo/3d-cartoon-fitness-man_23-2151691401.jpg?w=740"
+              src="/banner.png"
               alt="Hero Lift Character"
-              width={400}
-              height={400}
+              width={420}
+              height={420}
               priority
-              className="object-contain w-full h-full drop-shadow-[0_10px_20px_rgba(204,255,0,0.15)]"
+              className="object-contain w-full h-full drop-shadow-[0_15px_30px_rgba(0,0,0,0.6)]"
             />
           </div>
         </div>

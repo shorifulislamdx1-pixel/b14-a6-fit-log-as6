@@ -15,7 +15,6 @@ export default function WorkoutCard({ workout }: WorkoutCardProps) {
       href={`/workout/${workout.id}`}
       className="group flex flex-col bg-[#14161b] border border-zinc-800/80 rounded-xl overflow-hidden hover:border-[#ccff00]/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.4)]"
     >
-      {/* Top Image Container */}
       <div className="relative w-full h-52 bg-zinc-900 overflow-hidden">
         <Image
           src={workout.image}
@@ -27,9 +26,7 @@ export default function WorkoutCard({ workout }: WorkoutCardProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-[#14161b] via-transparent to-transparent opacity-60" />
       </div>
 
-      {/* Card Content Body */}
       <div className="flex flex-col flex-1 p-5 gap-3">
-        {/* Muscle Group Tag Pills */}
         <div className="flex flex-wrap gap-1.5">
           {workout.muscleGroups.map((tag) => (
             <span
@@ -41,17 +38,14 @@ export default function WorkoutCard({ workout }: WorkoutCardProps) {
           ))}
         </div>
 
-        {/* Workout Name */}
         <h3 className="text-lg font-black uppercase tracking-tight text-white group-hover:text-[#ccff00] transition-colors leading-snug">
           {workout.name}
         </h3>
 
-        {/* Equipment Line */}
         <p className="text-xs text-zinc-400 font-medium">
           {workout.equipment}
         </p>
 
-        {/* Stats Row */}
         <div className="mt-auto pt-3 border-t border-zinc-800/70 flex items-center justify-between text-xs text-zinc-400 font-semibold">
           <div className="flex items-center gap-1.5">
             <Clock className="w-3.5 h-3.5 text-zinc-500" />
