@@ -1,10 +1,11 @@
 import Hero from "@/components/Hero";
+import Library from "@/components/Library";
 
 export default function HomePage() {
   return (
     <div className="w-full min-h-screen">
       <Hero />
-      {/* পরের ধাপে এখানে The Library সেকশন আসবে */}
+      <Library />
     </div>
   );
 }

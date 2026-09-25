@@ -13,4 +13,4 @@ export interface Workout {
   description: string;
   instructions: string[];
   isDone?: boolean;
-}
+};

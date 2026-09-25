@@ -16,13 +16,11 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-zinc-800/80 bg-[#0b0c0e]/90 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         
-        {/* Left: Brand Logo */}
         <Link href="/" className="flex items-center gap-2 font-black tracking-wider text-xl text-white">
           <Dumbbell className="w-6 h-6 text-[#ccff00]" />
           <span>FITLOG</span>
         </Link>
 
-        {/* Center: Navigation Links */}
         <nav className="hidden sm:flex items-center gap-6">
           <Link
             href="/"
@@ -42,7 +40,6 @@ export default function Navbar() {
           </Link>
         </nav>
 
-        {/* Right: Badge Counters */}
         <div className="flex items-center gap-3">
           <Link
             href="/my-plan"

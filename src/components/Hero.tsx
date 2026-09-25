@@ -15,7 +15,6 @@ export default function Hero() {
     <section className="relative w-full border-b border-zinc-800/60 bg-[#0e1015] py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        {/* Left Column: Copy & CTA */}
         <div className="lg:col-span-7 flex flex-col items-start gap-5">
           <span className="text-xs font-bold uppercase tracking-widest text-[#ccff00] bg-[#ccff00]/10 px-3 py-1 rounded">
             WORKOUT LIBRARY
@@ -39,7 +38,6 @@ export default function Hero() {
           </button>
         </div>
 
-        {/* Right Column: Hero Graphic/Image */}
         <div className="lg:col-span-5 flex justify-center lg:justify-end">
           <div className="relative w-72 h-72 sm:w-84 sm:h-84 md:w-96 md:h-96 rounded-2xl overflow-hidden border border-zinc-800 bg-[#16181f] flex items-center justify-center p-4">
             <Image

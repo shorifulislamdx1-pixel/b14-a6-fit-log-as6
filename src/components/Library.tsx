@@ -1,6 +1,11 @@
+"use client";
+
+import { useEffect, useState, useMemo } from "react";
+import { ChevronDown, Loader2 } from "lucide-react";
+import WorkoutCard from "./WorkoutCard";
 import { Workout } from "@/types/workout";
 
-export const initialWorkouts: Workout[] = [
+const fallbackWorkouts: Workout[] = [
   {
     id: 1,
     name: "Barbell Bench Press",
@@ -242,3 +247,87 @@ export const initialWorkouts: Workout[] = [
     ]
   }
 ];
+
+type SortOption = "duration" | "calories" | "rating";
+
+export default function Library() {
+  const [workouts, setWorkouts] = useState<Workout[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [sortBy, setSortBy] = useState<SortOption>("duration");
+
+  useEffect(() => {
+    async function fetchWorkouts() {
+      try {
+        setIsLoading(true);
+        const res = await fetch("https://api.abcz.workers.dev/api/fitlog", {
+          cache: "no-store",
+        });
+        if (!res.ok) throw new Error("Fetch failed");
+        const data = await res.json();
+        setWorkouts(data);
+      } catch (err) {
+        console.warn("Using fallback workouts:", err);
+        setWorkouts(fallbackWorkouts);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchWorkouts();
+  }, []);
+
+  const sortedWorkouts = useMemo(() => {
+    const list = [...workouts];
+    if (sortBy === "duration") return list.sort((a, b) => b.duration - a.duration);
+    if (sortBy === "calories") return list.sort((a, b) => b.caloriesBurned - a.caloriesBurned);
+    if (sortBy === "rating") return list.sort((a, b) => b.rating - a.rating);
+    return list;
+  }, [workouts, sortBy]);
+
+  return (
+    <section id="library" className="w-full py-16 scroll-mt-16 bg-[#0b0c0e]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 pb-8 border-b border-zinc-800/80">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white">
+              THE LIBRARY
+            </h2>
+            <p className="text-sm text-zinc-400 mt-1">
+              Twelve lifts covering every major muscle group.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2 self-end sm:self-auto">
+            <span className="text-xs font-semibold text-zinc-400">Sort By</span>
+            <div className="relative">
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as SortOption)}
+                aria-label="Sort workouts by"
+                className="appearance-none bg-[#14161b] border border-zinc-800 text-xs font-bold text-white py-2 pl-3 pr-8 rounded-lg cursor-pointer hover:border-zinc-700 focus:outline-none focus:border-[#ccff00]"
+              >
+                <option value="duration">Duration</option>
+                <option value="calories">Calories</option>
+                <option value="rating">Rating</option>
+              </select>
+              <ChevronDown className="w-3.5 h-3.5 text-zinc-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            </div>
+          </div>
+        </div>
+
+        {isLoading ? (
+          <div className="w-full py-24 flex flex-col items-center justify-center gap-3 text-zinc-400">
+            <Loader2 className="w-8 h-8 text-[#ccff00] animate-spin" />
+            <p className="text-sm font-semibold tracking-wide">Loading workouts…</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-10">
+            {sortedWorkouts.map((workout) => (
+              <WorkoutCard key={workout.id} workout={workout} />
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
