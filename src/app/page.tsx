@@ -1,11 +1,10 @@
-import React from 'react';
+import Hero from "@/components/Hero";
 
-const page = () => {
+export default function HomePage() {
   return (
-    <div>
-      
+    <div className="w-full min-h-screen">
+      <Hero />
+      {/* পরের ধাপে এখানে The Library সেকশন আসবে */}
     </div>
   );
-};
-
-export default page;
+}
